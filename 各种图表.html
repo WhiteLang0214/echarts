@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图表集锦</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .clearfix:after{
+          content: "020"; 
+          display: block; 
+          height: 0; 
+          clear: both; 
+          visibility: hidden;  
+        }
+
+        .clearfix {
+          /* 触发 hasLayout */ 
+          zoom: 1; 
+        }
+        body {
+            background: #171922;
+        }
+        body > div {
+            margin: 100px auto;
+        }
+
+        /*数据总览页 的图表*/
+
+
+        /*收益曲线图*/
+        div.L_profitChart {
+            width: 1280px;
+            height: 330px;
+        }
+        /*日报表*/
+        div.L_dayChart {
+            width: 1280px;
+            height: 190px;
+        }
+        /*周报表*/
+        div.L_weekChart {
+            width: 1280px; 
+            height: 230px;
+        }
+
+
+        /*交易行为页 的图表*/
+
+        /*盈亏图*/
+        div.L_YKChart {
+            width: 1280px;
+            height: 350px;
+        }
+        /*交易风格(长短线)  和  交易品种  样式*/
+        div.L_jyStyle {
+            width: 1280px;
+        }
+        /*交易风格(长短线)  样式*/
+        div.L_jyStyle div.L_styleAtrade {
+            height: 300px;
+            float: left;
+        }
+        /*交易风格中的 左边的图表*/
+        div.L_jyStyle div.L_styleAtrade div.L_styleChart {
+            width: 320px;
+            height: 300px;
+            float: left;
+            margin-right: 20px;
+        }
+        /*交易风格中的 右边的说明*/
+        div.L_jyStyle div.L_styleAtrade div.L_tips {
+            width: 170px;
+            height: 240px;
+            float: right;
+            margin-top: 60px;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div {
+            height: 30px;
+            line-height: 30px;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div.L_styleNum {
+            height: 38px;
+            line-height: 38px;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > i {
+            display: inline-block;
+            width: 6px;
+            height: 14px;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > i.L_green {
+            background: #67eb6a;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > i.L_blue {
+            background: #5ebaef;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > i.L_red {
+            background: #e46b79;
+        }
+        /*交易风格 右侧说明 字体颜色*/
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > span {
+            color: #88888b;
+            font-size: 12px;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > span.L_green {
+            color: #67eb6a;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > span.L_blue {
+            color: #5ebaef;
+        }
+        div.L_jyStyle div.L_styleAtrade div.L_tips > div > span.L_red {
+            color: #e46b79;
+        }
+        /*交易品种  样式*/
+        div.L_jyStyle div.L_tradeVariety {
+            width: 770px;
+            height: 290px;
+            float: right;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradePZ {
+            width: 450px; 
+            height: 100%;
+            float: left;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB {
+            width: 300px;
+            height: 250px;
+            float: right;
+            overflow: auto;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_title ul li {
+            float: left;
+            height: 36px;
+            line-height: 36px;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_title ul li:first-child {
+            width: 120px;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_title ul li:nth-child(2),
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_title ul li:last-child {
+            width: 90px;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_title ul li {
+            font-size: 12px;
+            color: #fff;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_content ul li div {
+            height: 36px;
+            line-height: 36px;
+            float: left;
+            font-size: 12px;
+            color: #fff;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_content ul li div:first-child {
+            width: 120px;
+        }
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_content ul li div:nth-child(2),
+        div.L_jyStyle div.L_tradeVariety div.tradeLB div.tradeLB_content ul li div:last-child {
+            width: 90px;
+        }
+        /*交易时间分布 样式*/
+        div.L_tradeTimeFB {
+            width: 1280px;
+            height: 290px;
+        }
+        /*盈损分布图 样式*/
+        div.L_YSChart {
+            width: 1280px;
+            height: 290px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 收益曲线图 -->
+    <div class="L_profitChart">
+        <div id="profit_chart" style="width:1280px;height: 330px;margin: auto;"></div>
+    </div>
+    <!-- 日报表 -->
+    <div class="L_dayChart">
+        <div id="day_chart" style="width: 1280px;height: 190px;margin: auto;"></div>
+    </div>
+    <!-- 周报表 -->
+    <div class="L_weekChart">
+        <div id="week_chart" style="width: 1280px;height: 190px;margin: auto;"></div>
+    </div>
+    <!-- 盈亏图 -->
+    盈亏图
+    <div class="L_YKChart">
+        <div id="YK_chart" style="width:1280px;height: 350px;margin: auto;"></div>
+    </div>
+    <!-- 交易风格(长短线)  和  交易品种 -->
+    <div class="L_jyStyle clearfix">
+        <!-- 交易风格(长短线) -->
+        交易风格
+        <div class="L_styleAtrade clearfix">
+            <div class="L_styleChart">
+                <div id="style_chart" style="width: 320px;height: 300px;"></div>
+            </div>
+            <div class="L_tips">
+                <div>
+                    <i class="L_green"></i>
+                    <span>持仓0-48小时</span>
+                </div>
+                <div class="L_styleNum">
+                    <span class="L_green">&nbsp;&nbsp;&nbsp;50单</span>
+                </div>
+                <div>
+                    <i class="L_blue"></i>
+                    <span>持仓48-120小时</span>
+                </div>
+                <div class="L_styleNum">
+                    <span class="L_blue">&nbsp;&nbsp;&nbsp;50单</span>
+                </div>
+                <div>
+                    <i class="L_red"></i>
+                    <span>持仓120小时以上</span>
+                </div>
+                <div class="L_styleNum">
+                    <span class="L_red">&nbsp;&nbsp;&nbsp;50单</span>
+                </div>
+            </div>
+        </div>
+        <!-- 交易品种 -->
+        交易品种
+        <div class="L_tradeVariety clearfix">
+            <div class="tradePZ">
+                <div id="trade_type" style="width: 370px;height: 400px;"></div>
+            </div>
+            <div class="tradeLB clearfix" id="tradeLB">
+                <div class="tradeLB_title">
+                    <ul class="clearfix">
+                        <li>品种</li>
+                        <li>单量</li>
+                        <li>总收益</li>
+                    </ul>
+                </div>
+                <div class="tradeLB_content">
+                    <ul>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                        <li class="clearfix">
+                            <div>EURUSD</div>
+                            <div>12单</div>
+                            <div>55点</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 交易时间分布 -->
+    交易时间分布
+    <div class="L_tradeTimeFB">
+        <div id="L_timeFBchart" style="width: 1280px;height: 290px;margin: auto;"></div>
+    </div>
+    <!-- 盈损分布图 -->
+    盈损分布图
+    <div class="L_YSChart">
+        <div id="L_YSchart" style="width: 1280px;height: 290px;margin: auto;"></div>
+    </div>
+</body>
+</html>
+<script src="../jquery-1.12.4.min.js"></script>
+<script src="../highcharts.js"></script>
+<script src="../highcharts-3d.js"></script>
+<script src="../exporting.js"></script>
+<script src="../highcharts-more.js"></script>
+<script src="../solid-gauge.js"></script>
+<script src="../echarts.js"></script>
+<script src="jquery.nicescroll.min.js"></script>
+<script>
+// 遇到的问题
+// tab选项卡,多个页面有echarts图表时,canvas图表的宽高如果设置的百分比,
+// 当display:none-->转为display:block时,
+// 图表是没有宽高的,默认为100px
+// 解决办法:
+// 当mychart.resize时,设置width为直接父元素的宽高
+// 
+// 
+// 
+// 
+// 
+    // 禁用ctrl+ + 和ctrl+ - 缩放网页
+    $(document).ready(function () {
+        // chrome 浏览器直接加上下面这个样式就行了，但是ff不识别
+        $('body').css('zoom', 'reset');
+        $(document).keydown(function (event) {
+          if ((event.ctrlKey === true || event.metaKey === true)
+            && (event.which === 61 || event.which === 107
+                || event.which === 173 || event.which === 109
+                || event.which === 187  || event.which === 189))
+           {
+               event.preventDefault();
+           }
+        });
+        $(window).bind('mousewheel DOMMouseScroll', function (event) {
+            if (event.ctrlKey === true || event.metaKey) {
+               event.preventDefault();
+            }
+        });
+    });
+    // 收益曲线图
+    var data = [
+        ['2017-01-02','2017-03-03','2017-05-04','2017-05-02','2017-08-01'],
+        [8,5,-6,7,2]
+    ];
+    profit(profit_chart,data);
+    function profit(id,data){
+        var t = this;
+        return new Highcharts.Chart({
+            chart: {
+                renderTo: id,
+                type: "areaspline",
+                backgroundColor: '',
+                zoomType: "xy"
+            },
+            title: {
+                text : null
+            },
+            subtitle: {
+                text: '点/日期',
+                align: 'left',
+                verticalAlign: 'bottom'
+            },
+            colors: ["#ffc766"],
+            legend: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            exporting: {
+                enabled:false
+            },
+            xAxis: {
+                gridLineWidth: 0, //网格线宽度
+                lineColor: "#8b8b8b", //轴线颜色
+                tickColor: "#8b8b8b",
+                gridLineColor: "#f0f0f0", //网格线颜色
+                categories:data[0],
+                tickColor: "#2c303c", //刻度线颜色
+                tickInterval: Math.ceil(data[0].length / 7),            
+            },
+            yAxis: {
+                gridLineWidth: 1,
+                lineColor: "#8b8b8b",
+                tickColor: "#8b8b8b",
+                gridLineColor: "#2c303c",
+                title: {
+                    text: null
+                }
+            },
+            tooltip: {
+                style: {
+                    color: "white"
+                },
+                borderWidth: 1,
+                shadow: !1,
+                shared: !0,
+                backgroundColor: 'rgba(0,0,0)',   // 背景颜色
+                borderColor: '#3b9ce0',       // 边框颜色
+                formatter : function (){ // 提示框格式化字符串
+                    var s;
+                    $.each(this.points ,function(){
+                        s = '<b>总收入: ' + this.y+'点'+'</b><br/>';
+                    });
+                    s += '<b>截止: '+this.x+'</b>';
+                    return s;
+                }
+            },
+            plotOptions: {
+                areaspline: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, "#3b9ce0"],
+                            [1, Highcharts.Color("#3b9ce0").setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 0,
+                        fillColor: "white",
+                        lineWidth: 1,
+                        lineColor: "#ffc766"
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                },
+                series: {
+                    lineColor: "#3b9ce0"
+                }
+            },
+            series: [{
+                name: "盈利点位",
+                data: data[1]
+            }]
+        })
+    }
+    // 盈亏图
+    var YK_finalData = [182, 234, 290, 104, 131, 530],
+        YK_setProfile = [266, -255, -366, 233, 199],
+        YK_setLoss = [333, 444, -455, -266, 577],
+        YK_time = ['2017-01-02','2017-01-03','2017-01-04','2017-01-05','2017-01-06'];
+    YKprofit('YK_chart',YK_finalData,YK_setProfile,YK_setLoss,YK_time);
+    function YKprofit(id,YK_finalData,YK_setProfile,YK_setLoss,YK_time){
+        var myYKChart = echarts.init(document.getElementById(id))
+        option = {
+            title: {
+                text: '盈亏图',
+                subtext: null,
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 14
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                right: 20,
+                data: [{
+                    name: '最终盈亏',
+                    // 强制设置图形为长方形。
+                    icon: 'rect',
+                    // 设置文本为白色
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },{
+                    name: '设置止盈',
+                    icon: 'rect',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },{
+                    name: '设置止损',
+                    icon: 'rect',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }]
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: {
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                splitLine:{ //去除网格线
+                    show: false
+                },
+                axisLine: { // 取消坐标轴的线
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },                
+                boundaryGap: [0, 0.01]
+            },
+            xAxis: {
+                type: 'category',
+                splitLine:{ //去除网格线
+                    show: false
+                },
+                axisLine:{
+                    lineStyle: {
+                        color: '#474b6d'
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                data: YK_time
+            },
+            series: [
+                {
+                    name: '最终盈亏',
+                    type: 'bar',
+                    barMaxWidth: 20,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top', //数据显示在柱图顶部
+                            textStyle: {
+                                color: '#fff'
+                            },
+                            formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                                return params.data
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: function(params){
+                                var colorList = [ 
+                                    '#9c303c' 
+                                ];
+                                return colorList[0]
+                            }
+                        }
+                    },
+                    data: YK_finalData
+                },{
+                    name: '设置止盈',
+                    type: 'bar',
+                    barMaxWidth: 20,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top', //数据显示在柱图顶部
+                            textStyle: {
+                                color: '#fff'
+                            },
+                            formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                                return params.data
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: function(params){
+                                var colorList = [ 
+                                    '#0dff85' 
+                                ];
+                                return colorList[0]
+                            }
+                        }
+                    },
+                    data: YK_setProfile
+                },{
+                    name: '设置止损',
+                    type: 'bar',
+                    barMaxWidth: 20,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top', //数据显示在柱图顶部
+                            textStyle: {
+                                color: '#fff'
+                            },
+                            formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                                return params.data
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: function(params){
+                                var colorList = [ 
+                                    '#f0be36' 
+                                ];
+                                return colorList[0]
+                            }
+                        }
+                    },
+                    data: YK_setLoss
+                }
+            ]
+        };
+        myYKChart.setOption(option);
+        window.onresize = function () {
+            myYKChart.resize(); //使第一个图表适应
+        }
+    }
+    // 日报表  柱子: 盈亏点数  时间;  移入:单量 盈亏点数  时间
+    var dataday = [
+        [200, 170, -740, 544, 200, -220, 210,500,-600,-300,-400,-500,800],
+        ['2017-01-02','2017-01-03','2017-01-04','2017-01-05','2017-01-06','2017-01-07','2017-01-08','2017-01-09','2017-01-10','2017-01-11','2017-01-12','2017-01-13','2017-01-14'],
+        [2, 3, 4, 5, 7, 8, 6,3,0,-1,2,9,4],
+    ];
+    dayreport('day_chart',dataday);
+    function dayreport(id,data){
+        var mydayChart = echarts.init(document.getElementById(id))
+        option = {
+            title: {
+                subtext : '数量/日期',
+                left: '2%',
+                bottom: '10%',
+                // subtextStyle: { 标题样式
+                //     color: 'red'
+                // }
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                textStyle: { // 图例字体样式
+                    fontSize: 12
+                },
+                formatter: function (params) { // 鼠标悬浮在柱子上显示的提示文本
+                    var tar = params[0]; // 显示单量,盈亏点数,时间
+                    return '单量: '+data[2][tar.dataIndex]+'单'+'<br/>'+'盈亏: '+data[0][tar.dataIndex]+'点'+'<br/>'+'日期: '+data[1][tar.dataIndex]+'';
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis : [
+                {
+                    type : 'value',
+                    show: false,
+                    splitLine:{ //去除网格线
+                        show: false
+                    }
+                    // splitArea : {//保留网格区域
+                    //     show : true
+                    // }
+                }
+            ],
+            xAxis : [
+                {
+                    type : 'category',
+                    show: true, // 显示x轴
+                    axisTick : { //显示刻度线
+                        show: true
+                    }, 
+                    axisLabel: {
+                        interval: 2 // 隔2天显示一个x轴的刻度
+                    },
+                    axisLine:{ //坐标轴文字样式
+                        lineStyle:{
+                            color: '#8b8b8b'
+                        }
+                    },
+                    data : data[1]
+                }
+            ],
+            series : [
+                {
+                    name:'盈亏',
+                    type:'bar',
+                    // barWidth : 30,//柱图宽度
+                    barMaxWidth:30,//柱子最大宽度
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top', //数据显示在柱图顶部
+                            textStyle: {
+                                color: '#8b8b8b'
+                            },
+                            formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                                return params.data
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                var colorList = [
+                                  '#e94b5d','#89ff29'
+                                ];
+                                if(params.data < 0) { // 如果数据 < 0, 设置不同颜色
+                                    return colorList[1];
+                                }
+                                return colorList[0];
+                            },
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{b}\n{c}'
+                            }
+                        }
+                    },
+                    data:data[0]
+                }
+            ]
+        };
+        mydayChart.setOption(option);
+        window.onresize = function () {
+            mydayChart.resize(); //使第一个图表适应
+        }
+    }
+    // 周报表 柱子: 盈亏点数 时间;  移入:增长率 盈亏点数 
+    var dataweek = [
+        [ 200 , 170 , -740 , 544 , 200 , -220 , 210 , 500 , -600 , -300 , -400 , -500 , 800 ],
+        [ '2017-01-02','2017-01-03','2017-01-04','2017-01-05','2017-01-06','2017-01-07','2017-01-08','2017-01-09','2017-01-10','2017-01-11','2017-01-12','2017-01-13','2017-01-14'],
+        [ 20 , 30 , 40 , 5 , 7 , 8 , 6 , 3 , 0 , -1 , 2 , 9 , 4 ]
+    ];
+    weekreport('week_chart',dataweek);
+    function weekreport(id,data){
+        var myweekChart = echarts.init(document.getElementById(id))
+        option = {
+            title: {
+                subtext : '数量/日期',
+                left: '2%',
+                bottom: '10%',
+                // subtextStyle: { 标题样式
+                //     color: 'red'
+                // }
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                textStyle: { // 图例字体样式
+                    fontSize: 12
+                },
+                formatter: function (params) { // 鼠标悬浮在柱子上显示的提示文本
+                    var tar = params[0]; // 显示单量,盈亏点数,时间
+                    return '比上周增长: '+data[2][tar.dataIndex]+'%'+'<br/>'+'盈亏: '+data[0][tar.dataIndex]+'点';
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis : [
+                {
+                    type : 'value',
+                    show: false,
+                    splitLine:{ //去除网格线
+                        show: false
+                    }
+                    // splitArea : {//保留网格区域
+                    //     show : true
+                    // }
+                }
+            ],
+            xAxis : [
+                {
+                    type : 'category',
+                    show: true, // 显示x轴
+                    axisTick : { //显示刻度线
+                        show: true
+                    }, 
+                    axisLabel: {
+                        interval: 2 // 隔2天显示一个x轴的刻度
+                    },
+                    axisLine:{ //坐标轴文字样式
+                        lineStyle:{
+                            color: '#8b8b8b'
+                        }
+                    },
+                    data : data[1]
+                }
+            ],
+            series : [
+                {
+                    name:'盈亏',
+                    type:'bar',
+                    // barWidth : 30,//柱图宽度
+                    barMaxWidth:30,//最大宽度
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top', //数据显示在柱图顶部
+                            textStyle: { //柱子顶部数据文字样式
+                                color: '#8b8b8b' 
+                            },
+                            formatter: function(params) { // 只显示数据中的指定数值在柱形图顶部
+                                return params.data
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                var colorList = [
+                                  '#e94b5d','#89ff29'
+                                ];
+                                if(params.data < 0) { // 如果数据 < 0, 设置不同颜色
+                                    return colorList[1];
+                                }
+                                return colorList[0];
+                            },
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{b}\n{c}'
+                            }
+                        }
+                    },
+                    data:data[0]
+                }
+            ]
+        };
+        myweekChart.setOption(option);
+        window.onresize = function () {
+            myweekChart.resize(); //使第一个图表适应
+        }
+    }
+    // 交易品种
+    var datatype = [
+        {value:335, name:'直接访问'},
+        {value:310, name:'邮件营销'},
+        {value:234, name:'联盟广告'},
+        {value:135, name:'视频广告'},
+        {value:1548, name:'搜索引擎'}
+    ];
+    tradetye('trade_type',datatype);
+    function tradetye(id,data){
+        var mytradeChart = echarts.init(document.getElementById(id));
+        option = {
+            title : {
+                text: null,
+                subtext: '',
+                x:'left',
+                y:'20'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            toolbox: {
+                show : true,
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'',
+                    type:'pie',
+                    radius : '50%',
+                    center: ['50%', '40%'],
+                    data:datatype
+                }
+            ],
+            color: ['#F7A35C','#8FED7D','#434248','#7CB5EC','#8185E9','#F05D7F']
+        };
+         mytradeChart.setOption(option);
+         window.onresize = function () {
+            mytradeChart.resize(); //使第一个图表适应
+        }
+    }
+    $(document).ready(function(){
+        $("#tradeLB").niceScroll({
+          cursorborder:"",
+          cursorwidth:"10px",
+          cursorcolor:"#e7eb6a",
+          boxzoom:true,
+          cursoropacitymin: 1,
+          background:"#fff",
+          autohidemode:false
+      });
+    }) 
+    // 交易风格(长短线)
+    var styleDataN = [
+        {
+            value:5
+        }, //value: 中线单量(图表自动计算百分比)
+        {   
+            value:335
+        }, //value: 长线单量(图表自动计算百分比)
+        {   
+            value:555
+        }  //value: 短线单量(图表自动计算百分比)
+    ];
+    for(var i=0; i<styleDataN.length; i++) {
+        
+    }
+    var styleDataW = [
+        {
+            value:335, 
+            name:'中线盈利'
+        },
+        {
+            value:310, 
+            name:'中线亏损'
+        },
+        {
+            value:234, 
+            name:'长线盈利'
+        },
+        {
+            value:135, 
+            name:'长线亏损'
+        },
+        {
+            value:1048, 
+            name:'短线盈利'
+        },
+        {
+            value:2048, 
+            name:'短线亏损'
+        }
+    ];
+    for(var i=0; i<styleDataW.length; i++) {
+        
+    }
+    sevendayreport('style_chart',styleDataW,styleDataN);
+    function sevendayreport(id,data){
+        var mystyleChart = echarts.init(document.getElementById(id))
+        var i=0;  
+        var colors=['#5e98ef','#90ed7d','#e46b79'];
+        option = {
+            tooltip: { // 提示框组件---鼠标移入,组件位置
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)",
+                position: 'right' // 右侧显示
+            },
+            legend: {
+                orient: 'vertical',
+                x: 'left'
+            },
+            series: [
+                {
+                    name:'交易风格',
+                    type:'pie',
+                    selectedMode: 'single',
+                    radius: [0, '30%'],
+
+                    label: {
+                        normal: {
+                            position: 'inner'
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    color:['#5e98ef','#90ed7d','#e46b79'],
+                    data:[
+                        // {value:335, name:'直达', selected:true}, 为true的话,区域会突出显示
+                        {
+                            value:styleDataN[0].value, 
+                            name:'中线'
+                        }, //value: 中线单量(图表自动计算百分比)
+                        {
+                            value:styleDataN[1].value, 
+                            name:'长线'
+                        }, //value: 长线单量(图表自动计算百分比)
+                        {
+                            value:styleDataN[2].value, 
+                            name:'短线'
+                        }  //value: 短线单量(图表自动计算百分比)
+                    ]
+                },
+                {
+                    name: '',
+                    type:'pie',
+                    radius: ['40%', '55%'],
+                    color:['#875eef','#5ebaef','#eb9968','#f76a57','#67eb6a','#56aa49'],
+                    data:[
+                        {
+                            value:styleDataW[0].value, 
+                            name:'中线盈利'
+                        },  //中线盈利点位
+                        {
+                            value:styleDataW[1].value, 
+                            name:'中线亏损'
+                        },  //中线亏损点位
+                        {
+                            value:styleDataW[2].value, 
+                            name:'长线盈利'
+                        },
+                        {
+                            value:styleDataW[3].value, 
+                            name:'长线亏损'
+                        },
+                        {
+                            value:1048, 
+                            name:'短线盈利'
+                        },
+                        {
+                            value:1048, 
+                            name:'短线亏损'
+                        }
+                    ]
+                }
+            ]
+        };
+        mystyleChart.setOption(option);
+        window.onresize = function () {
+            mystyleChart.resize(); //使第一个图表适应
+        }
+    }
+    // 交易时间分布  柱子: 这个时间范围内的 总单量  移入: 这个时间段的胜率
+    var data7day = [
+        [200, 170, -740, 544, 200, -220, 210,500,-600,-300,-400],
+        ['0:00-2:00','2:00-4:00','4:00-6:00','6:00-8:00','8:00-10:00','10:00-12:00','12:00-14:00','14:00-16:00','16:00-18:00','18:00-20:00','22:00-24:00'],
+        [2, 3, 4, 5, 7, 8, 6,3,0,-1,2],
+    ];
+    timeFBreport('L_timeFBchart',data7day);
+    function timeFBreport(id,data){
+        var mytimeFBChart = echarts.init(document.getElementById(id))
+        option = {
+            title: {
+                subtext : null
+                // subtextStyle: { 标题样式
+                //     color: 'red'
+                // }
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                textStyle: { // 图例字体样式
+                    fontSize: 12
+                },
+                formatter: function (params) { // 鼠标悬浮在柱子上显示的提示文本
+                    var tar = params[0]; // 显示单量,盈亏点数,时间
+                    return '胜率: '+data[2][tar.dataIndex]+'%'+'<br/>'+'时间: '+data[1][tar.dataIndex]+'';
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: {
+                splitLine:{ //去除网格线
+                    show: false
+                },
+                axisLine: { //隐藏Y轴线
+                    show: false
+                },
+                axisTick : { //显示刻度线
+                    show: false
+                }, 
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            xAxis : {
+                type : 'category',
+                show: true, // 显示x轴
+                axisTick : { //显示刻度线
+                    show: false
+                }, 
+                axisLabel: {
+                    interval: 0, // 隔0天显示一个x轴的刻度
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisLine:{
+                    lineStyle: {
+                        color: '#474b6d'
+                    }
+                },
+                boundaryGap : true,
+                data : data[1]
+            },
+            series : {
+                    name:'盈亏',
+                    type:'bar',
+                    // barWidth : 30,//柱图宽度
+                    barMaxWidth:30,//柱子最大宽度
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top', //数据显示在柱图顶部
+                            textStyle: {
+                                color: '#fff'
+                            },
+                            formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                                return params.data
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                var colorList = [
+                                  '#c43343','#0dff90'
+                                ];
+                                if(params.data < 0) { // 如果数据 < 0, 设置不同颜色
+                                    return colorList[1];
+                                }
+                                return colorList[0];
+                            },
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{b}\n{c}'
+                            }
+                        }
+                    },
+                    data:data[0]
+                }
+        };
+        mytimeFBChart.setOption(option);
+        window.onresize = function () {
+            mytimeFBChart.resize(); //使第一个图表适应
+        }
+    }
+    // 盈亏分布图 柱子: 盈利单量+亏损单量  x轴: 收益点  移入: 盈利总盈点 和 亏损总盈点 的比例
+    var dataYS = [
+        [220, 182, 191, 234, 290, 330, 310,600],
+        [2, 17, -40, 54, 20, -22, 21,50,-60,50],
+        ['0-10','10-20','20-30','30-40','40-50','50-60','60-70','70-80','80-90','90-100']
+    ];
+    YSreport('L_YSchart',dataYS);
+    function YSreport(id,dataYS){
+        var myYSChart = echarts.init(document.getElementById(id))
+        option = {
+            xAxis: {
+                triggerEvent:true,
+                axisTick : { //显示刻度线
+                    show: false
+                }, 
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisLine:{
+                    lineStyle: {
+                        color: '#474b6d'
+                    }
+                },
+                data: dataYS[2]
+            },
+            yAxis: {
+                splitLine:{ //去除网格线
+                    show: false
+                },
+                axisLine: { //隐藏Y轴线
+                    show: false
+                },
+                axisTick : { //显示刻度线
+                    show: false
+                }, 
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top', //数据显示在柱图顶部
+                    textStyle: {
+                        color: '#20222c'
+                    },
+                    formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                        return params.data
+                    }
+                }
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                },
+                textStyle: { // 图例字体样式
+                    fontSize: 12
+                },
+                formatter: function (params) { // 鼠标悬浮在柱子上显示的提示文本
+                    var tar = params[0]; // 显示单量,盈亏点数,时间
+                    return '盈利总盈点: '+tar.data+''+'<br/>'+'盈亏总盈点比例: '+dataYS[1][tar.dataIndex]+'%';
+                }
+            },
+            series: [{
+                name: 'bar1',
+                type: 'bar',
+                barMaxWidth:30,//柱子最大宽度
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top', //数据显示在柱图顶部 如果不设置: 鼠标移入的时候,数据会隐藏
+                        textStyle: {
+                            color: '#fff'
+                        },
+                        formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                            return params.data
+                        }
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c43343'
+                    }
+                },
+                data: dataYS[0]
+            }, {
+                name: 'bar2',
+                type: 'bar',
+                barMaxWidth:30,//柱子最大宽度
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top', //数据显示在柱图顶部 如果不设置: 鼠标移入的时候,数据会隐藏
+                        textStyle: {
+                            color: '#fff'
+                        },
+                        formatter: function(params) { // 只显示数据中的指定数据在柱形图顶部
+                            return params.data
+                        }
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#0dff90'
+                    }
+                },
+                data: dataYS[1]
+            }]
+        };
+        myYSChart.setOption(option);
+        window.onresize = function () {
+            myYSChart.resize(); //使第一个图表适应
+        }
+    }
+</script>
+<script>
+    
+</script>
